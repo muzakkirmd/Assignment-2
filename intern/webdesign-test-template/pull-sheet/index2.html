@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Filter</title>
+<style>
+    /* Some basic styling */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://example.com/your-background-image.jpg'); /* Replace 'your-background-image.jpg' with the URL of your image */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    #filters {
+        background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent black background for better readability */
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    #members {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px;
+    }
+    .member {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fff;
+    }
+    .phd {
+        background-color: #e6f2ff;
+    }
+    .ug {
+        background-color: #ccffcc;
+    }
+    input[type="search"] {
+        padding: 5px;
+        width: 200px;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+    <div id="filters">
+        <input type="search" id="searchInput" placeholder="Search members...">
+    </div>
+
+    <ul id="members">
+        <li class="member phd">John - PhD</li>
+        <li class="member ug">Jane - UG</li>
+        <li class="member ug">Doe - UG</li>
+        <li class="member phd">Alice - PhD</li>
+        <li class="member phd">Bob - PhD</li>
+    </ul>
+
+<script>
+    // Function to filter members based on search input
+    function filterMembers() {
+        var searchInput = document.getElementById("searchInput");
+        var members = document.querySelectorAll(".member");
+
+        // Loop through all members and hide/show based on search input
+        members.forEach(function(member) {
+            var matchesSearch = member.textContent.toLowerCase().includes(searchInput.value.toLowerCase());
+
+            if (matchesSearch) {
+                member.style.display = "block";
+            } else {
+                member.style.display = "none";
+            }
+        });
+    }
+
+    // Attach event listener to search input
+    document.getElementById("searchInput").addEventListener("input", filterMembers);
+
+    // Initial filtering when the page loads
+    filterMembers();
+</script>
+</body>
+</html>
